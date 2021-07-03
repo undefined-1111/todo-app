@@ -5,4 +5,4 @@
 
 Можно создавать удалять и все работает на localstorage так что ваше записанное не испариться.
 
-(Demo)[https://todo.fullershorter.ml/]
+(https://todo.fullershorter.ml/)[Demo]

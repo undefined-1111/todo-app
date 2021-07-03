@@ -3,23 +3,25 @@ async function add() {
     let value = document.getElementById("adding").value
     let tasks = document.getElementById("tasks")
     let ls = localStorage.getItem("todo")
-    if(ls == undefined) {
+    if(!ls || ls == undefined || ls == null) {
         listArr = []
-    } if(!(ls == undefined)) {
+        console.log('suka')
+    } if(ls != undefined || ls != null) {
         listArr = JSON.parse(ls)
+        console.log("namas")
     }
     listArr.push(value)
-    tasks.innerHTML += `<div class="task w-full p-3 bg-gray-600 text-white mt-3 rounded-lg" onclick="del(${listArr.length -= 1})">${value}</div>`
     localStorage.setItem("todo", JSON.stringify(listArr))
+    tasks.innerHTML += `<div class="task w-full p-3 bg-gray-600 text-white mt-3 rounded-lg" onclick="del(${listArr.length -= 1})">${value}</div>`
 }
 
 async function show() {
     let ls = localStorage.getItem("todo")
-    console.log(ls)
-    if(!ls) {
+    let testlistarr = JSON.parse(ls)
+    if(!testlistarr) {
         listArr = []
         return
-    } else if(ls) {
+    } else {
         listArr = JSON.parse(ls)
         listArr.forEach((el,index) => {
             tasks.innerHTML += `<div class="task w-full block p-3 bg-gray-600 text-white mt-3 rounded-lg" onclick="del(${index})">${el}</div>`
